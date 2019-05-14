@@ -1,11 +1,43 @@
 
 @import "bulma";
 
+nav {
+	border: 0px;
+	border-bottom: 2px;
+	border-color: lightgray;
+	border-style: solid;
+}
 footer {
 	margin-top: 8em;
 }
 
+article {
+	padding: 1em;
+	margin-right: 1em;
+}
+
 main {
-	margin-top: 1em;
 	margin-left: 0;
+}
+
+.tile {
+	.is-parent {
+		padding: 0.75em;
+	}
+}
+
+.tasks.columns {
+	margin-left: -0.75em;
+	margin-right: -0.75em;
+	.column {
+		padding: 0.75em;
+		display: flex;
+	}
+
+	.card {
+		border-radius: 8px;
+		height: auto;
+		padding: 1em;
+		margin: 0;
+	}
 }

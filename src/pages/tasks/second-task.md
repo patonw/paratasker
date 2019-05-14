@@ -4,21 +4,20 @@ description: The second subtask here
 date: "2017-08-10"
 waypoints:
     - &first
-        name: HELLO
-        lat: 51.505
-        lon: -0.09
-    - &second
-        name: BYE
-        lat: 52.005
-        lon: -4.19
-    - &third
-        name: WHAT
-        lat: 57.405
-        lon: -3.19
+        name: PALO
+        coord: [33.335203, -116.954707]
+    - &chicken
+        name: CHICKN
+        lat: 33.329228
+        lon: -116.979958
+    - &bailout
+        name: BAIL
+        lat: 33.329084
+        lon: -116.960797
 task:
     - *first
-    - *second
-    - *third
+    - *chicken
+    - *bailout
     - *first
 ---
 
