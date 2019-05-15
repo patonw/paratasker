@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `PG Practicum`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `ParaTasker`,
+    description: `Paragliding tasks in San Diego for building technical skills`,
+		author: "",
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -16,8 +16,22 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `pages`,
-        path: `${__dirname}/src/pages`,
+        name: `index`,
+        path: `${__dirname}/src/pages/content/index.md`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `content`,
+        path: `${__dirname}/src/pages/content`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `tasks`,
+        path: `${__dirname}/src/pages/tasks`,
       },
     },
     `gatsby-transformer-remark`,

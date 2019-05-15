@@ -3,12 +3,19 @@ import { graphql } from "gatsby"
 
 export class Waypoint {
     name: string;
+    abbr: string;
     lat: number;
     lon: number;
     coord: number[];
 
     constructor(obj) {
         obj && Object.assign(this, obj)
+        this.name = this.name || this.abbr
+        this.abbr = this.abbr || this.name
+    }
+
+    getAbbr() {
+        return this.abbr || this.name
     }
 
     getLat() {
@@ -51,23 +58,23 @@ export class WaypointTable extends React.Component {
         const {waypoints} = this.props
         return (
             <table className="table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th><abbr title="Latitude">Lat</abbr></th>
-                    <th><abbr title="Longitude">Lon</abbr></th>
-                </tr>
-            </thead>
-            <tbody>
-                {waypoints.map((wp) => (
-                    <tr onClick={() => this.doClick(wp.name)} key={wp.name} className={this.state.hoverRow == wp.name ? "is-selected" : ""}>
-                        <td>{wp.name}</td>
-                        <td>{wp.getLat()}</td>
-                        <td>{wp.getLon()}</td>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th><abbr title="Latitude">Lat</abbr></th>
+                        <th><abbr title="Longitude">Lon</abbr></th>
                     </tr>
-                ))}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    {waypoints.map((wp) => (
+                        <tr onClick={() => this.doClick(wp.getAbbr())} key={wp.getAbbr()} className={this.state.hoverRow == wp.name ? "is-selected" : ""}>
+                            <td><abbr title={wp.name}>{wp.getAbbr()}</abbr></td>
+                            <td>{wp.getLat()}</td>
+                            <td>{wp.getLon()}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         )
     }
 }

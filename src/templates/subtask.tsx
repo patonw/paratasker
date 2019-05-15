@@ -44,12 +44,14 @@ class Subtask extends React.Component {
 
                 <div className="hero is-link">
                     <div className="hero-body">
+                    <div className="container">
                         <h1 className="title">{post.frontmatter.title}</h1>
                         {post.frontmatter.description}
                     </div>
+                    </div>
                 </div>
 
-                <article>
+                <article className="content container">
                     <div className="tile is-ancestor">
                         <div className="tile">
                             <div className="tile is-parent is-8">
@@ -60,9 +62,16 @@ class Subtask extends React.Component {
                                         taskpoints={taskpoints}/>
                                 </div>
                             </div>
-                            <div className="tile is-parent">
+                            <div className="tile is-parent is-vertical">
                                 <div className="tile is-child">
+                                <h4>Waypoints</h4>
                                     <WaypointTable waypoints={waypoints} />
+                                </div>
+                                <div className="tile is-child">
+                                    <h4>Task</h4>
+                                    <ol>
+                                        {taskpoints.map((wp,i) => <li key={i}>{wp.name}</li>)}
+                                    </ol>
                                 </div>
                             </div>
                         </div>
@@ -82,15 +91,14 @@ export const query = graphql`
             htmlAst
             frontmatter {
                 title
-                description
                 waypoints {
-                    name
+                    abbr
                     coord
                     lat
                     lon
                 }
                 task {
-                    name
+                    abbr
                     coord
                     lat
                     lon

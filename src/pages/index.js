@@ -1,38 +1,51 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import { Link, graphql } from "gatsby"
+import rehypeReact from "rehype-react"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSignal, faMountain } from '@fortawesome/free-solid-svg-icons'
 
-const IndexPage = ({data}) => (
+const renderAst = new rehypeReact({
+  createElement: React.createElement
+}).Compiler
+
+const IndexPage = ({ data }) => (
   <Layout>
     <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
 
-    <div className="hero is-link">
-        <div className="hero-body">
-            <h1 className="title">Tasks</h1>
-            Description
+    <div className="hero is-link is-medium">
+      <div className="hero-body">
+        <div className="container">
+          <div className="content">
+            <h1 className="title">Paragliding Mini-tasks</h1>
+            <div className="subtitle">
+              Small tasks to help progression
+            </div>
+            <div>
+              <Link className="button" to="/about">Learn More</Link>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
 
-    <article>
-      <div className="columns tasks">
-        {
-          data.allMarkdownRemark.edges.map(({node}) => (
-            <div key={node.id} className="column is-one-third">
-              <div className="card">
-                <Link to={node.fields.slug}>
-                  <div className="title is-4">
-                    {node.frontmatter.title}
-                  </div>
-                </Link>
-                <div className="content">
-                  {node.excerpt}
-                </div>
-              </div>
-            </div>
-          ))
-        }
+    <article className="container">
+      <div className="content focus">
+        <div className="columns is-multiline">
+          <Link to="/tasks" className="column has-text-centered is-block has-background-light">
+            <p className="title is-4">Levels</p>
+            <p className="subtitle is-6">Tasks by level</p>
+            <p className=""><FontAwesomeIcon size="4x" icon={faSignal} /></p>
+          </Link>
+          <Link to="/sites" className="column has-text-centered is-block has-background-light">
+            <p className="title is-4">Sites</p>
+            <p className="subtitle is-6">Tasks by site</p>
+            <p className=""><FontAwesomeIcon size="4x" icon={faMountain} /></p>
+          </Link>
+        </div>
+        {renderAst(data.markdownRemark.htmlAst)}
       </div>
     </article>
   </Layout>
@@ -41,22 +54,9 @@ const IndexPage = ({data}) => (
 export default IndexPage
 
 export const query = graphql`
-query {
-  allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-    totalCount
-    edges {
-      node {
-        id
-        frontmatter {
-          title
-          date(formatString: "DD MMMM, YYYY")
-        }
-        fields {
-          slug
-        }
-        excerpt
-      }
-    }
+{
+  markdownRemark(fields: { collection: {eq: "index"}}) {
+    htmlAst
   }
 }
 `

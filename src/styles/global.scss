@@ -7,13 +7,43 @@ nav {
 	border-color: lightgray;
 	border-style: solid;
 }
-footer {
-	margin-top: 8em;
+
+.navbar-brand {
+	font-weight: 600;
 }
 
-article {
-	padding: 1em;
-	margin-right: 1em;
+footer {
+	a {
+		color: currentColor;
+		&:hover {
+			color: $link;
+		}
+	}
+}
+
+.focus {
+	margin: 4rem auto;
+
+	.subtitle {
+		color: $grey;
+	}
+
+	.column {
+		padding: 2em;
+		margin: 1em;
+		border-radius: 4px;
+	}
+}
+
+.fh2 {
+	@extend .is-uppercase;
+	@extend .is-size-7;
+}
+
+.tl-head {
+  text-align: center;
+  font-size: 1.25em;
+  color: $grey-dark;
 }
 
 main {
@@ -26,18 +56,46 @@ main {
 	}
 }
 
-.tasks.columns {
-	margin-left: -0.75em;
-	margin-right: -0.75em;
-	.column {
-		padding: 0.75em;
-		display: flex;
+.navbar-item{
+  padding: 0.5rem 1rem;
+}
+
+.hero-body {
+  padding: 3rem 1rem;
+  .content {
+    padding: 0 2em;
+    @include desktop {
+      padding: 0 6em;
+    }
+  }
+}
+
+main {
+	color: #6b717f;
+
+	article {
+		padding: 1em;
+
+		@include desktop {
+			padding-left: 0;
+			padding-right: 0;
+		}
 	}
 
+	.tasklist {
+		padding: 1em;
+	}
+}
+
+.columns {
+	.column {
+		display: flex;
+	}
 	.card {
 		border-radius: 8px;
-		height: auto;
-		padding: 1em;
-		margin: 0;
+		.card-header,.content {
+			padding: 1em;
+		}
 	}
+
 }
