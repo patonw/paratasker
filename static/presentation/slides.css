@@ -1,0 +1,10 @@
+@import url("impress.js/examples/markdown/css/markdown-slides.css");
+
+
+h1, 
+h2, 
+h3 {
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    text-align: left;
+}

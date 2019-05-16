@@ -1,0 +1,3 @@
+[submodule "static/presentation/impress.js"]
+	path = static/presentation/impress.js
+	url = https://github.com/impress/impress.js
