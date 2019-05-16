@@ -17,14 +17,14 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `index`,
-        path: `${__dirname}/src/pages/content/index.md`,
+        path: `${__dirname}/src/content/index.md`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `content`,
-        path: `${__dirname}/src/pages/content`,
+        path: `${__dirname}/src/content`,
       },
     },
     {
@@ -34,6 +34,7 @@ module.exports = {
         path: `${__dirname}/src/pages/tasks`,
       },
     },
+    'gatsby-plugin-react-leaflet',
     `gatsby-transformer-remark`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
